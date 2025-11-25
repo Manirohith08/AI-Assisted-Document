@@ -9,14 +9,17 @@ models.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI()
 
+# Allow Frontend Access (Production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=[
+        "http://localhost:5173",                  # Local React
+        "https://ai-assisted-document.vercel.app" # Your Live Vercel App
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # --- Auth Routes ---
 @app.post("/register")
 def register(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
