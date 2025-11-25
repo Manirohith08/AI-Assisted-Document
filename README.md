@@ -165,21 +165,4 @@ Click "✨ AI Refine".
 
 Export: Click "Download File" to get the .pptx.
 
-📂 Folder Structure
 
-ai-doc-platform/
-├── Backend/
-│   ├── main.py            # API Routes & Logic
-│   ├── models.py          # Database Tables (User, Project, Section)
-│   ├── schemas.py         # Pydantic Data Models
-│   ├── database.py        # SQLite Connection
-│   ├── ai_service.py      # Gemini AI Integration
-│   ├── doc_service.py     # Docx/PPTX Generation
-│   ├── auth.py            # JWT Authentication
-│   └── requirements.txt   # Python Dependencies
-└── Frontend/
-    ├── src/
-    │   ├── App.jsx        # Main React Application Logic
-    │   └── main.jsx       # Entry Point
-    ├── package.json       # Node Dependencies
-    └── vite.config.js     # Vite Configuration
