@@ -25,7 +25,17 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
   -webkit-font-smoothing: antialiased;
+}
+
+/* Wrapper to ensure full width but centered content */
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -33,6 +43,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  box-sizing: border-box; /* Ensure padding doesn't overflow width */
 }
 
 /* Cards */
@@ -42,6 +53,7 @@ body {
   border-radius: 16px;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
   border: 1px solid var(--border);
+  margin: 0 auto; /* Center card if inside a flex container */
 }
 
 /* Grid Layouts */
@@ -49,6 +61,7 @@ body {
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  justify-content: center; /* Center grid items */
 }
 
 .editor-grid {
@@ -290,8 +303,8 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className="container" style={{display: 'flex', alignItems: 'center', height: '100vh'}}>
-      <div className="card" style={{maxWidth: '400px', margin: '0 auto', width: '100%'}}>
+    <div className="container" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh'}}>
+      <div className="card" style={{maxWidth: '400px', width: '100%'}}>
         <div style={{textAlign: 'center', marginBottom: '2rem'}}>
           <h1 style={{color: '#4f46e5', margin: '0 0 10px 0'}}>AI Doc Platform</h1>
           <p style={{color: '#64748b', margin: 0}}>
@@ -386,8 +399,8 @@ const ProjectWizard = ({ onComplete, onCancel }) => {
   };
 
   return (
-    <div className="container">
-      <div className="card" style={{maxWidth: '800px', margin: '40px auto'}}>
+    <div className="container" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh'}}>
+      <div className="card" style={{maxWidth: '800px', width: '100%'}}>
         {loading ? (
           <div style={{textAlign: 'center', padding: '60px'}}>
             <div className="spinner"></div>
@@ -489,7 +502,7 @@ const Editor = ({ project, onBack }) => {
   // CRITICAL FIX: Prevent crash if project is missing
   if (!project || !project.id) {
     return (
-      <div className="container">
+      <div className="container" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh'}}>
         <div className="card" style={{textAlign: 'center'}}>
           <h3>Loading Project Data...</h3>
           <button className="secondary" onClick={onBack}>Go Back</button>
