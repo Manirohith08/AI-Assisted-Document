@@ -225,7 +225,8 @@ button.danger:hover {
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 `;
 
-const API_URL = "http://localhost:8000";
+// Automatically switch between Localhost and Real Server
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 // ==========================================
 // COMPONENT 1: LOGIN & REGISTRATION
