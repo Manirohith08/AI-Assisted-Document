@@ -2,12 +2,21 @@ import google.generativeai as genai
 import os
 
 # --- CONFIGURATION ---
-API_KEY = "PASTE YOUR GEMINI API KEY HERE" 
+# SECURITY FIX: 
+# This tells Python to look for a hidden variable named "GEMINI_API_KEY" 
+# in the Render settings. It keeps your key safe from GitHub hackers.
+API_KEY = os.getenv("GEMINI_API_KEY")
 
-genai.configure(api_key=API_KEY)
+if not API_KEY:
+    print("❌ CRITICAL ERROR: API Key is missing! Set GEMINI_API_KEY in Render Environment Variables.")
 
-# ✅ UPDATED: Using the fastest, newest model available to your key
-model = genai.GenerativeModel('gemini-2.0-flash')
+# Configure Gemini
+try:
+    genai.configure(api_key=API_KEY)
+    # Using the fast, reliable model we confirmed works for you
+    model = genai.GenerativeModel('gemini-2.0-flash')
+except Exception as e:
+    print(f"❌ Configuration Error: {e}")
 
 def generate_template(topic: str, doc_type: str):
     """Generates an outline. Returns fallback data if AI fails."""
