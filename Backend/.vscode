@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "D:\\ai-doc-platform\\Backend\\venv\\Scripts\\python.exe",
+    "python.analysis.extraPaths": [
+        "D:\\ai-doc-platform\\Backend\\venv\\Lib\\site-packages"
+    ]
+}
